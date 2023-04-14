@@ -9,8 +9,9 @@
     "build": "rimraf dist && swc ./src -d dist",
     "start": "node dist/index.js",
     "start:docker": "yarn build && yarn --inspect=0.0.0.0 start",
-    "db:console": "docker compose run postgres psql -h localhost -U postgres -d webapp_dev",
+    "db:console": "docker compose run postgres psql -h postgres -U postgres -d nodestack_dev",
     "db:migrate": "knex migrate:latest",
+    "seed:dev": "docker compose run backend yarn ts-node scripts/seed/dev.ts",
     "docker:db:migrate": "docker compose run backend yarn db:migrate",
     "docker:db:migrate:undo": "docker compose run backend npx knex migrate:down",
     "rebuild:be": "docker compose build backend && docker compose rm --force --stop backend && docker compose up -d backend"
@@ -20,6 +21,7 @@
     "express": "^4.18.2",
     "knex": "^2.4.2",
     "morgan": "^1.10.0",
+    "nanoid": "3",
     "pg": "^8.10.0",
     "typescript": "^5.0.3"
   },

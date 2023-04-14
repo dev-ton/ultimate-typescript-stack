@@ -19,4 +19,4 @@ services:
       - postgres
     environment:
       DATABASE_URL: postgres://postgres@postgres/nodestack_dev
-      PORT: 5000
+      PORT: 5001
